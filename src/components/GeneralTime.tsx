@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import './App.css';
+import '../App.css';
 
 
 
@@ -67,16 +67,6 @@ export const GeneralTime =()=> {
         <button className="btn" >Lap</button>
       
       </div>
-      <table className="laps-table">
-        <thead>
-          <tr>
-            <th>Lp</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
     </div>
   );
 }
