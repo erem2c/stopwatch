@@ -46,4 +46,15 @@
 .laps-table{
   margin-top: 20px;
   border: 1px solid black;
+  width: 60%;
+  position: absolute;
+  background: aqua;
+  margin-left: 20%
+}
+
+.run-table {
+  width: 60%;
+  position: absolute;
+  background: antiquewhite;
+
 }
