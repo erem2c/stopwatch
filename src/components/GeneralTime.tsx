@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Table } from "./Table.tsx";
 import { Summary } from './Summary.tsx';
 import { Btns } from './Btn.tsx';
+import { Counters } from './Counters.tsx';
 import '../App.css';
 
 export const GeneralTime = () => {
@@ -46,7 +47,6 @@ export const GeneralTime = () => {
     setShowTimebox(false);
     setShowTable(false);
     setSummary(true);
-    // resetStopwatch();
   };
 
   const resetStopwatch = () => {
@@ -63,18 +63,8 @@ export const GeneralTime = () => {
 
   return (
     <div className="stopwatch">
-      <div className="timeBox">
-        <div className="time-display">
-          <span className="time-display-span">Total Time: {formatTime(totalTime)}</span>
-        </div>
-
-        <div className="time-display">
-          <span className="time-display-span">Lap Time: {formatTime(lapTime)} </span>
-        </div>
-      </div>
-
+      {showTimebox && <Counters totalTime={totalTime} lapTime={lapTime} formatTime={formatTime}/>}
       <Btns onStart={startStopwatch} onStop={stopStopwatch} onReset={resetStopwatch} onLap={resetLapTimeAndAddScore} isRunning={isRunning} />
-      
       {showTable && score.length > 0 && <Table lapScore={score}/>}
       {showSummary && <Summary lapScore={score}/>}
     </div>
