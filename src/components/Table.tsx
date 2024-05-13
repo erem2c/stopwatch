@@ -1,14 +1,20 @@
 import '../App.css';
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+
+type LapData = {
+    formattedTime: string;
+    lapTime: number;
+}
 
 type Props = {
-    lapScore: string[]
+    lapScore: LapData[];
 }
-export const Table = ( {lapScore}:Props) => {
-    const [laps, setLaps] = useState<string[]>([]);
+
+export const Table = ({ lapScore }: Props) => {
+    const [laps, setLaps] = useState<LapData[]>([]);
 
     useEffect(() => {
-        setLaps(lapScore)
+        setLaps(lapScore);
     }, [lapScore]);
 
     return (
@@ -16,16 +22,16 @@ export const Table = ( {lapScore}:Props) => {
             <h2>Runner Lap Times</h2>
             <table className="laps-table">
                 <thead>
-                <tr>
-                    <th>Lap Number</th>
-                    <th>Lap Time</th>
-                </tr>
+                    <tr>
+                        <th>Lap Number</th>
+                        <th>Lap Time</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {laps.map((lap, index) => (
                         <tr key={index}>
                             <td>{index + 1}</td>
-                            <td>{lap}</td>
+                            <td>{lap.formattedTime}</td>
                         </tr>
                     ))}
                 </tbody>
