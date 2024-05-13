@@ -1,3 +1,11 @@
+/* Zresetuj domyślne style dla elementów */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styl głównego kontenera */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,56 +13,114 @@
   text-align: center;
 }
 
-.stopwatch{
+/* Styl stopera */
+.stopwatch {
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
+  width: 80%;
   background-color: rgb(131, 129, 129);
   padding: 50px;
+  border-radius: 20px; /* Zaokrąglenie rogów */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Cień */
 }
 
-.timeBox{
+/* Styl sekcji z czasami */
+.timeBox {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+  margin-top: 20px; /* Przenieś sekcję nieco w dół */
 }
-.time-display{
-  width: 30%;
-  padding: 15px;
-  background-color: azure;
+
+/* Styl wyświetlacza czasu */
+.time-display {
+  margin: 30px;
+  flex: 1; /* Rozciągnij wyświetlacz czasu */
+  padding: 20px; /* Zwiększ odstęp wewnętrzny */
+  background-color: rgba(0, 128, 128, 0.8); /* Użyj półprzezroczystego koloru */
+  border-radius: 10px; /* Zaokrąglenie rogów */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Lekki cień */
 }
-.time-display-span{
-  text-align: center;
-  font-size: 1.4rem;
+
+/* Styl span w wyświetlaczu czasu */
+.time-display-span {
+  font-size: 2rem; /* Zwiększ rozmiar tekstu */
+  color: #fff; /* Biały kolor tekstu */
 }
-.buttons{
+
+/* Styl przycisków */
+.buttons {
   display: flex;
   justify-content: space-evenly;
   width: 50%;
   margin-top: 25px;
 }
-.btn{
+
+/* Styl przycisku */
+.btn {
   padding: 12px 30px;
+  background-color: rgb(65, 105, 225); /* Granatowy kolor tła */
+  color: #fff; /* Biały kolor tekstu */
+  border: none; /* Usuń obramowanie */
+  border-radius: 5px; /* Zaokrąglenie rogów */
+  cursor: pointer; /* Kursor wskazujący */
+  transition: background-color 0.3s ease; /* Płynna zmiana koloru tła */
 }
 
-.btn:hover{
-  background-color: rgb(100, 100, 228);
-  border: 2px solid yellowgreen;
+/* Styl przycisku po najechaniu */
+.btn:hover {
+  background-color: rgb(30, 144, 255); /* Ciemniejszy odcień granatowego */
 }
 
-.laps-table{
-  margin-top: 20px;
-  border: 1px solid black;
-  width: 60%;
-  position: absolute;
-  background: aqua;
-  margin-left: 20%
+/* Styl tabeli z okrążeniami */
+.laps-table {
+  padding: 1%;
+  margin: auto;
+  width: 80%; /* Zwiększ szerokość tabeli */
+  background: #f0f0f0; /* Jasny kolor tła */
+  border-radius: 10px; /* Zaokrąglenie rogów */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Lekki cień */
+  overflow: auto; /* Dodaj paski przewijania, jeśli tabela jest za długa */
 }
 
+/* Styl tabeli z okrążeniami - wiersze */
+.laps-table tr:nth-child(even) {
+  background-color: #ddd; /* Kolor tła dla parzystych wierszy */
+}
+
+/* Styl tabeli z okrążeniami - nagłówki */
+.laps-table th {
+  background-color: #4caf50; /* Zielony kolor tła dla nagłówków */
+  color: white; /* Biały kolor tekstu dla nagłówków */
+  padding: 12px 15px; /* Wewnętrzne marginesy dla nagłówków */
+  text-align: center; /* Wyjustowanie tekstu w lewo */
+}
+
+/* Styl tabeli z okrążeniami - komórki */
+.laps-table td {
+  padding: 8px 15px; /* Wewnętrzne marginesy dla komórek */
+  text-align: center; /* Wyjustowanie tekstu w lewo */
+}
+
+/* Styl tabeli z aktualnymi wynikami */
 .run-table {
-  width: 60%;
-  position: absolute;
-  background: antiquewhite;
+  padding: 2%;
+  margin: auto;
+  width: 80%; /* Zwiększ szerokość tabeli */
+  background: #fff; /* Białe tło */
+  border-radius: 10px; /* Zaokrąglenie rogów */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Lekki cień */
+  overflow: auto; /* Dodaj paski przewijania, jeśli tabela jest za długa */
+}
 
+h2 {
+  font-size: 24px; /* Rozmiar czcionki */
+  font-weight: bold; /* Pogrubienie tekstu */
+  color: #333; /* Kolor tekstu */
+  margin-bottom: 10px; /* Margines dolny */
+  text-align: center; /* Wycentrowanie tekstu */
+  text-transform: uppercase; /* Zamiana tekstu na wielkie litery */
+  padding: 2%;
 }

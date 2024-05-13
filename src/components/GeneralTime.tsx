@@ -1,12 +1,16 @@
 import  { useState, useEffect } from 'react';
 import '../App.css';
+import {Table} from "./Table.tsx";
 
 
 
 export const GeneralTime =()=> {
   const [totalTime, setTotalTime] = useState<number>(0);
+  const [lapTime, setLapTime] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [intervalId, setIntervalId] = useState<number | null>(null);
+
+  const [score, setScore] = useState<string[]>([]);
 
   useEffect(() => {
     return () => clearInterval(intervalId as number);
@@ -25,6 +29,7 @@ export const GeneralTime =()=> {
   const startStopwatch = () => {
     const id = setInterval(() => {
       setTotalTime(prevTime => prevTime + 100);
+      setLapTime(prevTime => prevTime + 100);
     }, 100);
     setIntervalId(id);
     setIsRunning(true);
@@ -36,11 +41,18 @@ export const GeneralTime =()=> {
   };
 
   const resetStopwatch = () => {
-    clearInterval(intervalId as number);
+    // clearInterval(intervalId as number);
     setTotalTime(0);
+    setLapTime(0);
+    setScore([]);
     setIsRunning(false);
   };
 
+  const resetLapTimeAndAddScore = () => {
+    setScore([...score, formatTime(lapTime)]);
+    setLapTime(0);
+    console.log(score);
+  }
 
 
   return (
@@ -51,7 +63,7 @@ export const GeneralTime =()=> {
         </div>
 
         <div className="time-display">
-          <span className="time-display-span">Lap Time: 00:00:00 </span>
+          <span className="time-display-span">Lap Time: {formatTime(lapTime)} </span>
         </div>
       </div>
 
@@ -64,9 +76,10 @@ export const GeneralTime =()=> {
         )}
         <button className="btn" onClick={resetStopwatch}>Reset</button>
 
-        <button className="btn" >Lap</button>
+        <button className="btn" onClick={resetLapTimeAndAddScore}>Lap</button>
       
       </div>
+      {score.length > 0 && <Table lapScore={score}/>}
     </div>
   );
 }
