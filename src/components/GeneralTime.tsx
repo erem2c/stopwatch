@@ -1,6 +1,7 @@
 import  { useState, useEffect } from 'react';
 import {Table} from "./Table.tsx";
 import { Summary } from './Summary.tsx';
+import {Btns} from './Btn.tsx';
 import '../App.css';
 
 export const GeneralTime =()=> {
@@ -76,17 +77,8 @@ export const GeneralTime =()=> {
       </div>
 
 
-      <div className="buttons">
-        {!isRunning ? (
-          <button className="btn" onClick={startStopwatch}>Start</button>
-        ) : (
-          <button className="btn" onClick={stopStopwatch}>Stop</button>
-        )}
-        <button className="btn" onClick={resetStopwatch}>Reset</button>
-
-        <button className="btn" onClick={resetLapTimeAndAddScore}>Lap</button>
+      <Btns onStart={startStopwatch} onStop={stopStopwatch} onReset={resetStopwatch} onLap={resetLapTimeAndAddScore} isRunning={isRunning} />
       
-      </div>
       {showTable && score.length > 0 && <Table lapScore={score}/>}
       {showSummary && <Summary lapScore={score}/>}
     </div>
