@@ -33,4 +33,3 @@ export const Table = ( {lapScore}:Props) => {
         </div>
     );
 }
-

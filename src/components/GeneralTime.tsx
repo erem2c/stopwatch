@@ -1,16 +1,17 @@
 import  { useState, useEffect } from 'react';
-import '../App.css';
 import {Table} from "./Table.tsx";
-
-
+import { Summary } from './Summary.tsx';
+import '../App.css';
 
 export const GeneralTime =()=> {
   const [totalTime, setTotalTime] = useState<number>(0);
   const [lapTime, setLapTime] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [intervalId, setIntervalId] = useState<number | null>(null);
-
   const [score, setScore] = useState<string[]>([]);
+  const [showTimebox, setShowTimebox] = useState(true);
+  const [showTable, setShowTable] = useState(true);
+  const [showSummary, setSummary] = useState(false);
 
   useEffect(() => {
     return () => clearInterval(intervalId as number);
@@ -33,11 +34,19 @@ export const GeneralTime =()=> {
     }, 100);
     setIntervalId(id);
     setIsRunning(true);
+    setShowTimebox(true);
+    setShowTable(true);
+    setSummary(false);
   };
 
   const stopStopwatch = () => {
     clearInterval(intervalId as number);
     setIsRunning(false);
+    setShowTimebox(false);
+    setShowTable(false);
+    setSummary(true);
+    resetStopwatch();
+
   };
 
   const resetStopwatch = () => {
@@ -53,7 +62,6 @@ export const GeneralTime =()=> {
     setLapTime(0);
     console.log(score);
   }
-
 
   return (
     <div className="stopwatch">
@@ -79,9 +87,8 @@ export const GeneralTime =()=> {
         <button className="btn" onClick={resetLapTimeAndAddScore}>Lap</button>
       
       </div>
-      {score.length > 0 && <Table lapScore={score}/>}
+      {showTable && score.length > 0 && <Table lapScore={score}/>}
+      {showSummary && <Summary lapScore={score}/>}
     </div>
   );
 }
-
-
